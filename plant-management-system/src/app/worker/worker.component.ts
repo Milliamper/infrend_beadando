@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class WorkerComponent implements OnInit {
 
+  workers!: Worker[]
+
   constructor(private formBuilder: FormBuilder) { }
 
   workerForm: FormGroup = this.formBuilder.group({
@@ -20,6 +22,10 @@ export class WorkerComponent implements OnInit {
   })
 
   ngOnInit(): void {
+  }
+
+  addWorker() {
+    
   }
 
 }

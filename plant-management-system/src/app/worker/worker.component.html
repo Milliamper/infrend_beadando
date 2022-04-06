@@ -1,1 +1,31 @@
-<p>worker works!</p>
+<div class="row">
+
+    <div class="col-md-6">
+        <form [formGroup]="workerForm">
+
+
+            <label for="id">Azonosító</label>
+            <input type="number" class="form-control" id="id" formControlName="id">
+
+            <label for="name">Név</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+
+            <label for="qualification">Szakképzettség</label>
+            <input type="text" class="form-control" id="qualification" formControlName="qualification">
+
+            <label for="hourly_wage">Órabér</label>
+            <input type="number" class="form-control" id="hourly_wage" formControlName="hourly_wage">
+
+
+            <label for="status" class="form-label">Státusz</label>
+            <select name="status" class="form-select" id="status" name="status">
+                <option value="szabadságon">szabadságon</option>
+                <option value="dolgozik">dolgozik</option>
+                <option value="szabad">szabad</option>
+              </select>
+
+            <button class="btn btn-primary mt-2" (click)="addWorker()">Felvétel</button>
+
+        </form>
+    </div>
+</div>
