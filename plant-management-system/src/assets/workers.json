@@ -1,0 +1,22 @@
+[{
+        "id": "1",
+        "name": "Szalai Márton",
+        "qualification": "esztergályos",
+        "hourly_wage": 2000,
+        "status": "szabadságon"
+    },
+    {
+        "id": "2",
+        "name": "Soós Márk",
+        "qualification": "CNC programozó",
+        "hourly_wage": 2500,
+        "status": "dolgozik"
+    },
+    {
+        "id": "3",
+        "name": "Sebák Petra",
+        "qualification": "Gépi és CNC forgácsoló",
+        "hourly_wage": 3000,
+        "status": "szabad"
+    }
+]

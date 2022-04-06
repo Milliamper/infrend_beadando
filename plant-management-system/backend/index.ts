@@ -1,11 +1,20 @@
+import "reflect-metadata";
+import {createConnection} from "typeorm";
+import { connectionOptions } from "./ormconfig";
 import express from 'express'
+import { getRouter } from "./src/routes"
 
-const app = express()
 
-app.get('/api/greet', (req,res) => {
-    res.json({message: 'Hello World'})
-})
+createConnection(connectionOptions).then(async connection => {
 
-app.listen(3000, () => {
-    console.log('Szerver sikeresen elindítva')
-})
+    const app = express();
+
+    app.use(express.json());
+    app.use('/api', getRouter());
+
+    app.listen(3000, () => {
+        console.log('Listening on 3000 ...');
+    });
+
+
+}).catch(error => console.log(error));

@@ -1,31 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { WorkerService } from '../services/worker.service';
 
 @Component({
   selector: 'app-worker',
   templateUrl: './worker.component.html',
-  styleUrls: ['./worker.component.css']
+  styleUrls: ['./worker.component.css'],
 })
 export class WorkerComponent implements OnInit {
+  workers!: Worker[];
 
-  workers!: Worker[]
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private workerService: WorkerService
+  ) {}
 
   workerForm: FormGroup = this.formBuilder.group({
     id: [],
     name: [''],
     qualification: [''],
     hourly_wage: [''],
-    status: ['']
-  })
+    status: [''],
+  });
 
-  ngOnInit(): void {
-  }
-
-  addWorker() {
-    
-  }
-
+  ngOnInit(): void {}
 }
