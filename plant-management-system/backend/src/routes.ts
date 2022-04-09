@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { WorkerController } from "./src/controller/worker-controller";
+import { WorkerController } from "./controller/worker-controller";
 
 export function getRouter() {
     const router = Router()

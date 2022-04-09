@@ -2,7 +2,7 @@ import "reflect-metadata";
 import {createConnection} from "typeorm";
 import { connectionOptions } from "./ormconfig";
 import express from 'express'
-import { getRouter} from './src/routes'
+import { getRouter } from "./src/routes";
 
 
 createConnection(connectionOptions).then(async connection => {
@@ -13,7 +13,7 @@ createConnection(connectionOptions).then(async connection => {
     app.use('/api', getRouter());
 
     app.listen(3000, () => {
-        console.log('Listening on port 3000 ...');
+        console.log('Listening on 3000 ...');
     });
 
 
