@@ -4,5 +4,4 @@ import { Controller } from "./controller";
 
 export class WorkerController extends Controller{
     repository = getRepository(Worker) // úgy kap értéket, hogy meghívjuk a typeORM getRepository függvényét
-
 }
