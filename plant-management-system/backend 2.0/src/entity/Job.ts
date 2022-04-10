@@ -19,8 +19,10 @@ export class Job {
   @Column()
   name: string;
 
-  @ManyToOne(type => Worker, worker => worker.jobs)
-  @JoinColumn()
+  @ManyToOne((type) => Worker, {
+    eager: true,
+    cascade: true,
+  })
   worker: Worker;
 
   @OneToMany((type) => Task, (task) => task.job) // egy munkához tartozhat több feladat is
