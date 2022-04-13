@@ -5,16 +5,16 @@
                 <th *ngFor="let column of tableHeaders">
                     {{column}}
                 </th>
-
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let worker of workers; let i = index">
-                <th scope="row">{{i+1}}</th>
+            <tr *ngFor="let worker of workers">
+                <th scope="row">{{worker.id}}</th>
                 <td>{{worker.name}}</td>
                 <td>{{worker.qualification}}</td>
                 <td>{{worker.hourly_wage}}</td>
                 <td>{{worker.status}}</td>
+                <td> <button class="btn btn-sm btn-danger" (click)="deleteWorker(worker.id)">Törlés</button></td>
             </tr>
         </tbody>
     </table>

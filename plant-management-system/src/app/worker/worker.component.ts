@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { WorkerService } from '../services/worker.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Worker } from '../models/worker';
 
 @Component({
   selector: 'app-worker',
@@ -8,20 +8,11 @@ import { WorkerService } from '../services/worker.service';
   styleUrls: ['./worker.component.css'],
 })
 export class WorkerComponent implements OnInit {
-  workers!: Worker[];
+  constructor(private router:Router) {}
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private workerService: WorkerService
-  ) {}
-
-  workerForm: FormGroup = this.formBuilder.group({
-    id: [],
-    name: [''],
-    qualification: [''],
-    hourly_wage: [''],
-    status: [''],
-  });
+  id = 1
+  tableHeaders = ['#' ,'Név', 'Szakképzettség', 'Órabér', 'Státusz']
 
   ngOnInit(): void {}
+
 }

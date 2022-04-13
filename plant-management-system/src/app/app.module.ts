@@ -10,10 +10,11 @@ import { AppComponent } from './app.component';
 import { JobComponent } from './job/job.component';
 import { TaskComponent } from './task/task.component';
 import { WorkerComponent } from './worker/worker.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { WorkerFormComponent } from './worker/worker-form/worker-form.component';
+import { WorkerListComponent } from './worker/worker-list/worker-list.component';
 
 @NgModule({
-  declarations: [AppComponent, JobComponent, TaskComponent, WorkerComponent, MainPageComponent],
+  declarations: [AppComponent, JobComponent, TaskComponent, WorkerComponent, WorkerFormComponent, WorkerListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
