@@ -15,6 +15,7 @@
                 <td>{{worker.hourly_wage}}</td>
                 <td>{{worker.status}}</td>
                 <td> <button class="btn btn-sm btn-danger" (click)="deleteWorker(worker.id)">Törlés</button></td>
+                <td> <button class="btn btn-sm btn-warning" (click)="navigateToWorkerFormForEditing(worker.id)">Módosítás</button></td>
             </tr>
         </tbody>
     </table>

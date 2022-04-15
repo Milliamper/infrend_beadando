@@ -22,4 +22,8 @@ export class WorkerService {
   async deleteWorker(id: number){ // törlés egyesével
     return await lastValueFrom(this.http.delete('/api/workers/' + id))
   }
+
+  async getWorkerByIdForEditing(id: string) {
+    return await lastValueFrom(this.http.get<Worker>('/api/workers/' + id))
+  }
 }

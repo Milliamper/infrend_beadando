@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Worker } from 'src/app/models/worker';
 import { WorkerService } from 'src/app/services/worker.service';
 
@@ -8,11 +9,11 @@ import { WorkerService } from 'src/app/services/worker.service';
   styleUrls: ['./worker-list.component.css'],
 })
 export class WorkerListComponent implements OnInit {
-  tableHeaders = ['#', 'Név', 'Szakképzettség', 'Órabér', 'Státusz', 'Törlés'];
+  tableHeaders = ['#', 'Név', 'Szakképzettség', 'Órabér', 'Státusz', 'Törlés', 'Módosítás'];
 
   workers: Worker[] = [];
 
-  constructor(private workerService: WorkerService) {}
+  constructor(private workerService: WorkerService, private router: Router) {}
 
   async ngOnInit() {
     // itt lesz az a logika amivel a termékeket betöltjük, de csak a komponens inicializálása után, és elhelyezzük a products adattagban
@@ -23,5 +24,13 @@ export class WorkerListComponent implements OnInit {
   async deleteWorker(id: number) {
     await this.workerService.deleteWorker(id)
     this.workers = await this.workerService.loadWorkers()
+  }
+
+  navigateToWorkerFormForEditing(id: number) {
+    this.router.navigate(['/worker-form'], {
+      queryParams: {
+        id: id,
+      },
+    });
   }
 }

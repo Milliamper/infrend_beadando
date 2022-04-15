@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
@@ -14,10 +14,18 @@ export class WorkerFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private workerService: WorkerService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    const id = this.activatedRoute.snapshot.queryParams['id']; // id kiolvasása szerkesztéshez
+
+    if (id) { // ha érvényes az id...
+      const product = await this.workerService.getWorkerByIdForEditing(id); // ..letároljuk egy változóban 
+      this.workerForm.setValue(product) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
+    }
+  }
 
   workerForm: FormGroup = this.formBuilder.group({
     id: [],
