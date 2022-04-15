@@ -1,0 +1,20 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let column of tableHeaders">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <th scope="row">{{task.id}}</th>
+                <td>{{task.name}}</td>
+                <td>{{task.machine}}</td>
+                <td> <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id)">Törlés</button></td>
+                <td> <button class="btn btn-sm btn-warning" (click)="navigateToTaskFormForEditing(task.id)">Módosítás</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

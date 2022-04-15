@@ -9,7 +9,7 @@ import { WorkerService } from 'src/app/services/worker.service';
   styleUrls: ['./worker-list.component.css'],
 })
 export class WorkerListComponent implements OnInit {
-  tableHeaders = ['#', 'Név', 'Szakképzettség', 'Órabér', 'Státusz', 'Törlés', 'Módosítás'];
+  tableHeaders = ['#', 'Név', 'Szakképzettség', 'Órabér', 'Státusz',  'Törlés', 'Módosítás'];
 
   workers: Worker[] = [];
 

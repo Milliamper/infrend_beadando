@@ -1,0 +1,24 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+        <form [formGroup]="taskForm">
+
+            <label for="name">Feladat megnevezése</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+
+            <label for="machine">Gép amelyen elvégzendő</label>
+            <input type="text" class="form-control" id="machine" formControlName="machine">
+
+            <button class="btn btn-primary mt-2" (click)="addTask()">Felvétel</button>
+
+        </form>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+</div>

@@ -12,9 +12,12 @@ import { TaskComponent } from './task/task.component';
 import { WorkerComponent } from './worker/worker.component';
 import { WorkerFormComponent } from './worker/worker-form/worker-form.component';
 import { WorkerListComponent } from './worker/worker-list/worker-list.component';
+import { TaskFormComponent } from './task/task-form/task-form.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, JobComponent, TaskComponent, WorkerComponent, WorkerFormComponent, WorkerListComponent],
+  declarations: [AppComponent, JobComponent, TaskComponent, WorkerComponent, WorkerFormComponent, WorkerListComponent, TaskFormComponent, TaskListComponent, MainPageComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
