@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { JobFormComponent } from './job/job-form/job-form.component';
 import { JobComponent } from './job/job.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TaskFormComponent } from './task/task-form/task-form.component';
@@ -19,8 +20,8 @@ const routes: Routes = [
     component: WorkerFormComponent
   },
   {
-    path:'jobs',
-    component: JobComponent
+    path:'job-form',
+    component: JobFormComponent
   },
   {
     path: 'task-form',

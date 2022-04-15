@@ -1,6 +1,6 @@
 export interface Job {
     id: number
     name: string
-    worker: Worker[]
+    worker: Worker
     task: Task[]
 }

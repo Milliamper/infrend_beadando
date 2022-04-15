@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany} from "typeorm";
 import { Job } from "./Job";
 
 @Entity()
@@ -13,11 +13,8 @@ export class Task {
     @Column()
     machine: string;
 
-    @ManyToOne(type => Job, {
-        eager: true, 
-        cascade: true 
-    })
-    job: Job
+    @OneToMany((type) => Job, (job) => job.tasks) // egy munkához tartozhat több feladat is
+    jobs: Job[];
 
     // INSERT INTO `task` (`id`, `name`, `machine`, `jobId`) VALUES (1, 'esztergálás', 'esztergáló', 1);
 }

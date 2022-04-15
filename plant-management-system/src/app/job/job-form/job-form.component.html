@@ -1,0 +1,45 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+        <form [formGroup]="jobForm">
+
+            <label for="name">Munka megnevezése</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+
+            <label for="tasks">Feladatok</label>
+            <select class="form-control" id="tasks" [compareWith]="compareTasks" formControlName="tasks" multiple>
+                <option *ngFor="let task of tasks" [ngValue]="tasks">{{ task.name }}</option>
+            </select>
+
+            <label for="workers">Munkás</label>
+            <select class="form-control" id="workers" formControlName="workers">
+                <option *ngFor="let worker of workers" [ngValue]="workers">{{ worker.name }}</option>
+            </select>
+
+            <button class="btn btn-primary mt-2" (click)="addJob()">Felvétel</button>
+
+        </form>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+        <app-job-list></app-job-list>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+</div>

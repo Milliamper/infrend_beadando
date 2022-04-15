@@ -1,0 +1,21 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let column of tableHeaders">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let job of jobs">
+                <th scope="row">{{job.id}}</th>
+                <td>{{job.name}}</td>
+                <td>{{job.task}}</td>
+                <td>{{job.worker}}</td>
+                <td> <button class="btn btn-sm btn-danger" (click)="deleteJob(job.id)">Törlés</button></td>
+                <td> <button class="btn btn-sm btn-warning" (click)="navigateToJobFormForEditing(job.id)">Módosítás</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

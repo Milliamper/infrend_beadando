@@ -25,7 +25,11 @@ export class Job {
   })
   worker: Worker;
 
-  @OneToMany((type) => Task, (task) => task.job) // egy munkához tartozhat több feladat is
+  @ManyToOne((type) => Task, {
+    eager: true,
+    cascade: true,
+  })
+  @JoinTable()
   tasks: Task[];
 
   // INSERT INTO `job` (`id`, `name`, `workerId`) VALUES (1, 'M1', '1')
