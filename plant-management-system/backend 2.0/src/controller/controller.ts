@@ -53,22 +53,23 @@ export abstract class Controller {
   // put-nak felelnek meg kb
   update = this.create;
 
-  delete = async (req, res) => {
-    try {
-      const id = req.params.id;
-      const entity = await this.repository.findOne();
+    delete = async (req, res) => {
+        try {
+            const id = req.params.id;
+            const entity = await this.repository.findOne(id);
 
-      if (!entity) {
-        this.handleError(res, 404, 'No entity found');
-      }
+            if (!entity) {
+                this.handleError(res, 404, 'No entity found');
+                return;
+            }
 
-      await this.repository.delete(entity);
-      res.json({ succes: true });
-    } catch (error) {
-        console.error(error);
-        this.handleError(res);
+            await this.repository.delete(entity);
+            res.json({ success: true });
+        } catch (err) {
+            console.error(err);
+            this.handleError(res);
+        }
     }
-  };
 
   // hibakezelés minden controller esetében ua, ezért kezelhető külön függvényben
   handleError = (res, status = 500, message = 'Server error') => {
