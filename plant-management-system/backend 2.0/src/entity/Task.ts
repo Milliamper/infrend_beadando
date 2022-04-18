@@ -14,20 +14,19 @@ export class Task {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   machine: string;
 
-  /*@ManyToOne((type) => Job, {
+  @ManyToOne((type) => Job, {
     eager: true,
     cascade: true,
+    nullable: true
   })
-  job: Job;*/
+  munka: Job;
 
-  @ManyToMany(() => Job, job => job.tasks)
-    job: Job[];
 
   // INSERT INTO `task` (`id`, `name`, `machine`, `jobId`) VALUES (1, 'esztergálás', 'esztergáló', 1);
 }

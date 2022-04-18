@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Job } from 'src/app/models/job';
+import { JobService } from 'src/app/services/job.service';
 import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
@@ -9,11 +11,14 @@ import { WorkerService } from 'src/app/services/worker.service';
   styleUrls: ['./worker-form.component.css'],
 })
 export class WorkerFormComponent implements OnInit {
-  workers!: Worker[];
+  
+  successMessage!: string // sikeres hozzáadás esetén ezt az üzenetet írjuk ki
+  errorMessage!: string // szerver valamilyen hibát ad vissza
 
   constructor(
     private formBuilder: FormBuilder,
     private workerService: WorkerService,
+    private jobService: JobService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -22,8 +27,8 @@ export class WorkerFormComponent implements OnInit {
     const id = this.activatedRoute.snapshot.queryParams['id']; // id kiolvasása szerkesztéshez
 
     if (id) { // ha érvényes az id...
-      const product = await this.workerService.getWorkerByIdForEditing(id); // ..letároljuk egy változóban 
-      this.workerForm.setValue(product) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
+      const worker = await this.workerService.getWorkerByIdForEditing(id); // ..letároljuk egy változóban 
+      this.workerForm.setValue(worker) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
     }
   }
 
@@ -35,10 +40,16 @@ export class WorkerFormComponent implements OnInit {
     status: [''],
   });
 
-  addWorker() {
+  async addWorker() {
     const worker = this.workerForm.value;
-    this.workerService.addWorker(worker);
-    this.router.navigateByUrl('/');
+    this.successMessage=''
+    this.errorMessage=''
+    try{
+      const workerAdded = await this.workerService.addWorker(worker)
+      this.router.navigateByUrl('/');
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   

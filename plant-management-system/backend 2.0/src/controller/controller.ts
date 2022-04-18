@@ -34,22 +34,21 @@ export abstract class Controller {
     }
   };
 
-  // egyetlen record lekérdezése
   getOne = async (req, res) => {
-    try {
-      const id = req.params.id; // id megkapása a kérésből
-      const entity = await this.repository.findOne(); // feltétel nélkül minden értéket visszaad
+    const entityId = req.params.id;
 
-      // ha nem találunk adott id-val recordot
-      if (!entity) {
-        this.handleError(res, 404, 'No entity found');
-      }
-      res.json(entity); // ha találtunk entity-t, visszaküldjük a kliensnek
-    } catch (error) {
-      console.error(error);
-      this.handleError(res); // hibaüzenetet visszaküldjük a kliensnek
+    try {
+        const entity = await this.repository.findOne(entityId);
+
+        if (!entity) {
+            return res.status(404).json({ message: 'Entity not found.' });
+        }
+
+        res.json(entity);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
-  };
+}
 
   // put-nak felelnek meg kb
   update = this.create;

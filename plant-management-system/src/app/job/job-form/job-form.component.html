@@ -10,14 +10,10 @@
             <label for="name">Munka megnevezése</label>
             <input type="text" class="form-control" id="name" formControlName="name">
 
-            <label for="tasks">Feladatok</label>
-            <select class="form-control" id="tasks" [compareWith]="compareTasks" formControlName="tasks" multiple>
-                <option *ngFor="let task of tasks" [ngValue]="tasks">{{ task.name }}</option>
-            </select>
 
             <label for="workers">Munkás</label>
-            <select class="form-control" id="workers" formControlName="workers">
-                <option *ngFor="let worker of workers" [ngValue]="workers">{{ worker.name }}</option>
+            <select class="form-control" id="workers" formControlName="munkas">
+                <option  *ngFor="let worker of szabadWorkers" [ngValue]="worker">{{ worker.name }}</option>
             </select>
 
             <button class="btn btn-primary mt-2" (click)="addJob()">Felvétel</button>
@@ -30,6 +26,7 @@
     </div>
 </div>
 
+<!--
 <div class="row">
     <div class="col-md-3">
 
@@ -42,4 +39,4 @@
     <div class="col-md-3">
 
     </div>
-</div>
+</div> -->

@@ -15,7 +15,7 @@ export class JobService {
   }
 
   async addJob(job: Job) { 
-    return await lastValueFrom(this.http.post<Task>('/api/jobs/', job))
+    return await lastValueFrom(this.http.post<Job>('/api/jobs/', job))
   }
 
   async deleteJob(id: number){
@@ -25,4 +25,6 @@ export class JobService {
   async getJobByIdForEditing(id: string) {
     return await lastValueFrom(this.http.get<Job>('/api/jobs/' + id))
   }
+
+
 }

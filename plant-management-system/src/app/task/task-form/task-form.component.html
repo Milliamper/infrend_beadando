@@ -13,6 +13,11 @@
             <label for="machine">Gép amelyen elvégzendő</label>
             <input type="text" class="form-control" id="machine" formControlName="machine">
 
+            <label for="jobs">Munka</label>
+            <select class="form-control" id="jobs" formControlName="munka">
+                <option *ngFor="let job of jobs" [ngValue]="job">{{ job.name }}</option>
+            </select>
+
             <button class="btn btn-primary mt-2" (click)="addTask()">Felvétel</button>
 
         </form>

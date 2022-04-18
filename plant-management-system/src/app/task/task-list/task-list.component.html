@@ -12,6 +12,7 @@
                 <th scope="row">{{task.id}}</th>
                 <td>{{task.name}}</td>
                 <td>{{task.machine}}</td>
+                <td>{{task.munka.name}}</td>
                 <td> <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id)">Törlés</button></td>
                 <td> <button class="btn btn-sm btn-warning" (click)="navigateToTaskFormForEditing(task.id)">Módosítás</button></td>
             </tr>

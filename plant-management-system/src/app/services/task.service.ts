@@ -4,25 +4,24 @@ import { lastValueFrom } from 'rxjs';
 import { Task } from '../models/task';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   async loadTasks() {
-    return await lastValueFrom(this.http.get<Task[]>('/api/tasks'))
+    return await lastValueFrom(this.http.get<Task[]>('/api/tasks'));
   }
 
-  async addTask(task: Task) { 
-    return await lastValueFrom(this.http.post<Task>('/api/tasks/', task))
+  async addTask(task: Task) {
+    return await lastValueFrom(this.http.post<Task>('/api/tasks/', task));
   }
 
-  async deleteTask(id: number){
-    return await lastValueFrom(this.http.delete('/api/tasks/' + id))
+  async deleteTask(id: number) {
+    return await lastValueFrom(this.http.delete('/api/tasks/' + id));
   }
 
   async getTaskByIdForEditing(id: string) {
-    return await lastValueFrom(this.http.get<Task>('/api/tasks/' + id))
+    return await lastValueFrom(this.http.get<Task>('/api/tasks/' + id));
   }
 }

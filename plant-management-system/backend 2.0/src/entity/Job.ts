@@ -18,22 +18,18 @@ export class Job {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable:true})
   name: string;
 
-  @OneToMany(type => Worker, worker => worker.job) // egy felhasználóhoz tartozhat több termék is
-  job: Job[]
+  @OneToMany(() => Task, task => task.munka)
+  feladatok: Task[];
 
-  @ManyToMany(() => Task, (task) => task.job, {
+  @ManyToOne((type) => Worker, {
     eager: true,
     cascade: true,
+    nullable: true
   })
-  @JoinTable()
-  tasks: Task[];
-
-  /*@OneToMany(() => Task, tasks => tasks.job)
-  @JoinTable() // egy munkához tartozhat több feladat is
-  tasks: Task[];*/
+  munkas: Worker;
 
   // INSERT INTO `job` (`id`, `name`, `workerId`) VALUES (1, 'M1', '1')
 }

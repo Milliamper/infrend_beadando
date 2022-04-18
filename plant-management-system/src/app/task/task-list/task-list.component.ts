@@ -10,7 +10,7 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskListComponent implements OnInit {
 
-  tableHeaders = ['#', 'Feladat megnevezése', 'Gép amelyen elvégzendő', 'Törlés', 'Módosítás'];
+  tableHeaders = ['#', 'Feladat megnevezése', 'Gép amelyen elvégzendő', 'Munka', 'Törlés', 'Módosítás'];
 
   tasks: Task[] = [];
 

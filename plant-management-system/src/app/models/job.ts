@@ -1,6 +1,8 @@
+import { Task } from "./task"
+import { Worker } from "./worker"
+
 export interface Job {
     id: number
     name: string
-    worker: Worker
-    task: Task[]
+    munkas: Worker
 }

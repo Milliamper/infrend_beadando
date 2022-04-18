@@ -15,9 +15,9 @@ import { WorkerService } from 'src/app/services/worker.service';
 })
 export class JobFormComponent implements OnInit {
 
-  jobs!: Job[];
-  tasks!: Task[]
-  workers!: Worker[]
+  workers: Worker[] = []
+  szabadWorkers: Worker[] = []
+  specifiedStatus = 'szabad'
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,30 +31,32 @@ export class JobFormComponent implements OnInit {
   async ngOnInit() {
     const id = this.activatedRoute.snapshot.queryParams['id']; // id kiolvasása szerkesztéshez
 
-    this.tasks = await this.taskService.loadTasks();
     this.workers = await this.workerService.loadWorkers()
+    this.szabadWorkers = this.filterSzabad('szabad')
 
     if (id) { // ha érvényes az id...
-      const task = await this.jobService.getJobByIdForEditing(id); // ..letároljuk egy változóban 
-      this.jobForm.setValue(task) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
+      const job = await this.jobService.getJobByIdForEditing(id); // ..letároljuk egy változóban 
+      this.jobForm.setValue(job) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
     }
+  }
+
+  filterSzabad(status: string) {
+    return this.workers.filter(x => x.status === status)
   }
 
   jobForm: FormGroup = this.formBuilder.group({
     id: [],
     name: [''],
-    tasks: [[]],
-    workers: [[]]
+    munkas:[]
   });
 
   addJob() {
     const job = this.jobForm.value;
     this.jobService.addJob(job);
+    this.router.navigateByUrl('/');
   }
 
-    // termékben lévő felhasználót összehasonlítjuk a felhasználói listában lévő felhasználóval
-    compareTasks(task1: Task, task2: Task) {
-      return task1 && task2 && task1.id === task2.id
-    }
+
+
 
 }

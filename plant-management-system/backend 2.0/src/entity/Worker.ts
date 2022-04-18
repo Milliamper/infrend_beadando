@@ -6,6 +6,7 @@ import {
   OneToOne,
   ManyToMany,
   ManyToOne,
+  JoinTable,
 } from 'typeorm';
 import { Job } from './Job';
 
@@ -14,23 +15,20 @@ export class Worker {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   qualification: string;
 
-  @Column()
+  @Column({ nullable: true })
   hourly_wage: number;
 
-  @Column()
+  @Column({ nullable: true })
   status: string;
 
-  @ManyToOne((type) => Job, {
-    eager: true, // ha lekérdezünk egy vagy több terméket, akkor a termék objektumban automatikusan benne lesz a hozzá tartozó felhasználó
-    cascade: true, // ha hozzáadunk egy új terméket, és hozzáadunk egy új usert is, akkor ez a kapcsolat automatikusan mentésre kerül
-  })
-  job: Job;
+  @OneToMany(() => Job, job => job.munkas)
+  munkak: Job[];
 
   //INSERT INTO `worker` (`id`, `name`, `qualification`, `hourly_wage`, `status`) VALUES (1, 'Szalai Márton', 'esztergályos', 2000, 'szabad')
 }

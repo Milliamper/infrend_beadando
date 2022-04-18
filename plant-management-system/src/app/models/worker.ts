@@ -6,5 +6,4 @@ export interface Worker {
     qualification: string
     hourly_wage: number
     status: string
-    job: Job
 }
