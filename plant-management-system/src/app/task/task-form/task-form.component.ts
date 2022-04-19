@@ -37,7 +37,7 @@ export class TaskFormComponent implements OnInit {
     id: [],
     name: ['', Validators.required],
     machine: ['', Validators.required],
-    munka: [Validators.required],
+    munka: ['', Validators.required],
   });
 
   addTask() {

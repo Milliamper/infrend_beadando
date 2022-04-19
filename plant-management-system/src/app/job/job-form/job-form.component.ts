@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Job } from 'src/app/models/job';
-import { Task } from 'src/app/models/task';
 import { Worker } from 'src/app/models/worker';
 import { JobService } from 'src/app/services/job.service';
-import { TaskService } from 'src/app/services/task.service';
 import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
@@ -46,7 +43,7 @@ export class JobFormComponent implements OnInit {
   jobForm: FormGroup = this.formBuilder.group({
     id: [],
     name: ['', Validators.required],
-    munkas: [Validators.required],
+    munkas: ['', Validators.required],
   });
 
   addJob() {
