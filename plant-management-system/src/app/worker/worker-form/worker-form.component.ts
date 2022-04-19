@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Job } from 'src/app/models/job';
-import { JobService } from 'src/app/services/job.service';
 import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
@@ -18,7 +16,6 @@ export class WorkerFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private workerService: WorkerService,
-    private jobService: JobService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -28,16 +25,20 @@ export class WorkerFormComponent implements OnInit {
 
     if (id) { // ha érvényes az id...
       const worker = await this.workerService.getWorkerByIdForEditing(id); // ..letároljuk egy változóban 
-      this.workerForm.setValue(worker) // ...űrlapra betöltjük a szerkeszteni kívánt product adatait
+      this.workerForm.setValue(worker) // ...űrlapra betöltjük a szerkeszteni kívánt worker adatait
     }
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.workerForm.controls;
   }
 
   workerForm: FormGroup = this.formBuilder.group({
     id: [],
-    name: [''],
-    qualification: [''],
-    hourly_wage: [''],
-    status: [''],
+    name: ['', Validators.required],
+    qualification: ['', Validators.compose([Validators.minLength(3), Validators.required])],
+    hourly_wage: ['', Validators.compose([Validators.min(1495),Validators.required])],
+    status: ['', Validators.required],
   });
 
   async addWorker() {

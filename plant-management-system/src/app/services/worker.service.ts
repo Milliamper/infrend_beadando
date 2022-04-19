@@ -24,7 +24,7 @@ export class WorkerService {
   async getWorkerByIdForEditing(id: string) {
     return await lastValueFrom(this.http.get<Worker>('/api/workers/' + id));
   }
-
+/*
   async filterStatus(search: string) {
     return await lastValueFrom(
       this.http.get<Worker[]>(
@@ -34,5 +34,5 @@ export class WorkerService {
           }
       )
     );
-  }
+  }*/
 }

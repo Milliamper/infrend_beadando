@@ -9,12 +9,21 @@
 
             <label for="name">Név</label>
             <input type="text" class="form-control" id="name" formControlName="name">
+            <div class="text-danger" *ngIf="f['name']?.invalid">
+                <small *ngIf="f['name']?.errors?.['required']">A név mező nem hagyható üresen!</small>
+            </div>
 
             <label for="qualification">Szakképzettség</label>
             <input type="text" class="form-control" id="qualification" formControlName="qualification">
+            <div class="text-danger" *ngIf="f['qualification'].invalid">
+                <small *ngIf="f['qualification'].errors">A szakképzettségnek legalább 3 karakter hosszúnak kell lennie</small>
+            </div>
 
             <label for="hourly_wage">Órabér</label>
             <input type="number" class="form-control" id="hourly_wage" formControlName="hourly_wage">
+            <div class="text-danger" *ngIf="f['hourly_wage'].invalid">
+                <small *ngIf="f['hourly_wage'].errors">A legalább középfokú iskolai végzettséget/szakképzettséget igénylő munkakörben foglalkoztatott munkavállaló garantált bérminimuma a teljes munkaidő teljesítése esetén 2022. január 1-jétől, órabér alkalmazása esetén 1.495 Ft /óra</small>
+            </div>
 
 
             <label for="status" class="form-label">Státusz</label>
@@ -23,8 +32,11 @@
                 <option value="dolgozik">dolgozik</option>
                 <option value="szabad">szabad</option>
             </select>
+            <div class="text-danger" *ngIf="f['status'].invalid">
+                <small *ngIf="f['status'].errors">Státusz megadása kötelező!</small>
+            </div>
 
-            <button class="btn btn-primary mt-2" (click)="addWorker()">Felvétel</button>
+            <button class="btn btn-primary mt-2" (click)="addWorker()" [disabled]="workerForm.invalid">Felvétel</button>
 
         </form>
     </div>

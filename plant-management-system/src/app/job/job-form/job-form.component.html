@@ -9,14 +9,20 @@
 
             <label for="name">Munka megnevezése</label>
             <input type="text" class="form-control" id="name" formControlName="name">
+            <div class="text-danger" *ngIf="f['name']?.invalid">
+                <small *ngIf="f['name']?.errors?.['required']">Ez a mező nem hagyható üresen!</small>
+            </div>
 
 
             <label for="workers">Munkás</label>
             <select class="form-control" id="workers" formControlName="munkas">
                 <option  *ngFor="let worker of szabadWorkers" [ngValue]="worker">{{ worker.name }}</option>
             </select>
+            <div class="text-danger" *ngIf="f['munkas'].invalid">
+                <small *ngIf="f['munkas'].errors">Munkás választása kötelező!</small>
+            </div>
 
-            <button class="btn btn-primary mt-2" (click)="addJob()">Felvétel</button>
+            <button class="btn btn-primary mt-2" (click)="addJob()" [disabled]="jobForm.invalid">Felvétel</button>
 
         </form>
     </div>
@@ -25,18 +31,3 @@
 
     </div>
 </div>
-
-<!--
-<div class="row">
-    <div class="col-md-3">
-
-    </div>
-
-    <div class="col-md-6">
-        <app-job-list></app-job-list>
-    </div>
-
-    <div class="col-md-3">
-
-    </div>
-</div> -->

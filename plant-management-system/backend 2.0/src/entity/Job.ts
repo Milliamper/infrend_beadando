@@ -4,30 +4,25 @@ import {
   Column,
   OneToMany,
   ManyToOne,
-  OneToOne,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
 } from 'typeorm';
 import { Task } from './Task';
 import { Worker } from './Worker';
-
 
 @Entity()
 export class Job {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   name: string;
 
-  @OneToMany(() => Task, task => task.munka)
+  @OneToMany(() => Task, (task) => task.munka) // 1 munkához több task tartozhat
   feladatok: Task[];
 
   @ManyToOne((type) => Worker, {
     eager: true,
     cascade: true,
-    nullable: true
+    nullable: true,
   })
   munkas: Worker;
 

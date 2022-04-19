@@ -19,8 +19,8 @@ export class JobListComponent implements OnInit {
   constructor(private jobService: JobService, private router: Router, private workerService: WorkerService) {}
 
   async ngOnInit() {
-    // itt lesz az a logika amivel a termékeket betöltjük, de csak a komponens inicializálása után, és elhelyezzük a products adattagban
-    // azért kell az await, mert a loadProduct egy aszinkron művelet, vagyis amíg ez végrehajtódik, más kódok és végrehajtásra kerülhetnek
+    // itt lesz az a logika amivel a munkákat betöltjük, de csak a komponens inicializálása után, és elhelyezzük a jobs adattagban
+    // azért kell az await, mert a loadJobs egy aszinkron művelet, vagyis amíg ez végrehajtódik, más kódok is végrehajtásra kerülhetnek
     this.jobs = await this.jobService.loadJobs();
   }
 

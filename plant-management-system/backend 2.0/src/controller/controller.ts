@@ -10,11 +10,9 @@ export abstract class Controller {
 
   // kontroller az entitások létrehozásához
   create = async (req, res) => {
-    
-  
     // entitás hozzáadása az adatbázishoz
     try {
-        const entity = this.repository.create(req.body); // az entitás a kérés törzsében érkezik. Ebből csinálunk egy typeorm entitást
+      const entity = this.repository.create(req.body); // az entitás a kérés törzsében érkezik. Ebből csinálunk egy typeorm entitást
       const entityAdded = await this.repository.save(entity); //aszinkron fv, ezért await. Visszatér azzal a recorddal amit a db-hez hozzáadtunk
       res.json(entityAdded);
     } catch (error) {
@@ -27,7 +25,7 @@ export abstract class Controller {
   getAll = async (req, res) => {
     try {
       const entities = await this.repository.find(); // feltétel nélkül minden értéket visszaad
-      res.json(entities) // recordok visszaküldése a kliensnek
+      res.json(entities); // recordok visszaküldése a kliensnek
     } catch (error) {
       console.error(error);
       this.handleError(res); // hibaüzenetet visszaküldjük a kliensnek
@@ -38,38 +36,38 @@ export abstract class Controller {
     const entityId = req.params.id;
 
     try {
-        const entity = await this.repository.findOne(entityId);
+      const entity = await this.repository.findOne(entityId);
 
-        if (!entity) {
-            return res.status(404).json({ message: 'Entity not found.' });
-        }
+      if (!entity) {
+        return res.status(404).json({ message: 'Entity not found.' });
+      }
 
-        res.json(entity);
+      res.json(entity);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+      res.status(500).json({ message: err.message });
     }
-}
+  };
 
-  // put-nak felelnek meg kb
+  // put-nak felelnek meg
   update = this.create;
 
-    delete = async (req, res) => {
-        try {
-            const id = req.params.id;
-            const entity = await this.repository.findOne(id);
+  delete = async (req, res) => {
+    try {
+      const id = req.params.id;
+      const entity = await this.repository.findOne(id);
 
-            if (!entity) {
-                this.handleError(res, 404, 'No entity found');
-                return;
-            }
+      if (!entity) {
+        this.handleError(res, 404, 'No entity found');
+        return;
+      }
 
-            await this.repository.delete(entity);
-            res.json({ success: true });
-        } catch (err) {
-            console.error(err);
-            this.handleError(res);
-        }
+      await this.repository.delete(entity);
+      res.json({ success: true });
+    } catch (err) {
+      console.error(err);
+      this.handleError(res);
     }
+  };
 
   // hibakezelés minden controller esetében ua, ezért kezelhető külön függvényben
   handleError = (res, status = 500, message = 'Server error') => {

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +17,26 @@ import { JobFormComponent } from './job/job-form/job-form.component';
 import { JobListComponent } from './job/job-list/job-list.component';
 
 @NgModule({
-  declarations: [AppComponent, JobComponent, TaskComponent, WorkerComponent, WorkerFormComponent, WorkerListComponent, TaskFormComponent, TaskListComponent, MainPageComponent, JobFormComponent, JobListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  declarations: [
+    AppComponent,
+    JobComponent,
+    TaskComponent,
+    WorkerComponent,
+    WorkerFormComponent,
+    WorkerListComponent,
+    TaskFormComponent,
+    TaskListComponent,
+    MainPageComponent,
+    JobFormComponent,
+    JobListComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

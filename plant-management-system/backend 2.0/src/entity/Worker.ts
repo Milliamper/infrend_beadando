@@ -27,7 +27,7 @@ export class Worker {
   @Column({ nullable: true })
   status: string;
 
-  @OneToMany(() => Job, job => job.munkas)
+  @OneToMany(() => Job, job => job.munkas) // 1 munkáshoz tartozhat több munka is
   munkak: Job[];
 
   //INSERT INTO `worker` (`id`, `name`, `qualification`, `hourly_wage`, `status`) VALUES (1, 'Szalai Márton', 'esztergályos', 2000, 'szabad')
