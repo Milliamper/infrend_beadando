@@ -16,6 +16,7 @@ export class Task {
     eager: true,
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE'
   })
   munka: Job;
 

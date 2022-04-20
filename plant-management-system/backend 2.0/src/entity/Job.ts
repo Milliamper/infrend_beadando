@@ -23,6 +23,7 @@ export class Job {
     eager: true,
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE'
   })
   munkas: Worker;
 
