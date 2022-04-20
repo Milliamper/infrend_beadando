@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from 'typeorm';
 import { Job } from './Job';
+import { Machine } from './Machine';
 
 @Entity()
 export class Task {
@@ -9,8 +10,13 @@ export class Task {
   @Column({ nullable: true })
   name: string;
 
-  @Column({ nullable: true })
-  machine: string;
+  @ManyToOne((type) => Machine, {
+    eager: true,
+    cascade: true,
+    nullable: true,
+    onDelete: 'CASCADE'
+  })
+  gep: Machine;
 
   @ManyToOne((type) => Job, {
     eager: true,
@@ -19,6 +25,4 @@ export class Task {
     onDelete: 'CASCADE'
   })
   munka: Job;
-
-  // INSERT INTO `task` (`id`, `name`, `machine`, `jobId`) VALUES (1, 'esztergálás', 'esztergáló', 1);
 }

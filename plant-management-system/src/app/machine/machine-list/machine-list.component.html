@@ -1,0 +1,20 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let column of tableHeaders">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let machine of machines">
+                <th scope="row">{{machine.id}}</th>
+                <td>{{machine.name}}</td>
+                <td>{{machine.status}}</td>
+                <td> <button class="btn btn-sm btn-danger" (click)="deleteMachine(machine.id)">Törlés</button></td>
+                <td> <button class="btn btn-sm btn-warning" (click)="navigateToMachineFormForEditing(machine.id)">Módosítás</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

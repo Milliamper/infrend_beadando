@@ -13,10 +13,12 @@
                 <small *ngIf="f['name']?.errors?.['required']">Ez a mező nem hagyható üresen!</small>
             </div>
 
-            <label for="machine">Gép amelyen elvégzendő</label>
-            <input type="text" class="form-control" id="machine" formControlName="machine">
-            <div class="text-danger" *ngIf="f['machine']?.invalid">
-                <small *ngIf="f['machine']?.errors?.['required']">Ez a mező sem hagyható üresen!</small>
+            <label for="machines">Gép amelyen elvégzendő</label>
+            <select class="form-control" id="machines" formControlName="gep">
+                <option *ngFor="let machine of szabadMachines" [ngValue]="machine">{{ machine.name }}</option>
+            </select>
+            <div class="text-danger" *ngIf="f['gep'].invalid">
+                <small *ngIf="f['gep'].errors">Gép választása kötelező</small>
             </div>
 
             <label for="jobs">Munka</label>

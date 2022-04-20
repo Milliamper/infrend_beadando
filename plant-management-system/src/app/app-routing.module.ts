@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { JobFormComponent } from './job/job-form/job-form.component';
 import { JobComponent } from './job/job.component';
+import { MachineFormComponent } from './machine/machine-form/machine-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TaskFormComponent } from './task/task-form/task-form.component';
 import { TaskComponent } from './task/task.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'task-form',
     component: TaskFormComponent
+  },
+  {
+    path:'machine-form',
+    component: MachineFormComponent
   }
 ];
 

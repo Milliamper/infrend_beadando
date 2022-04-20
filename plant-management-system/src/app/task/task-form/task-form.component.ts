@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Job } from 'src/app/models/job';
-import { Task } from 'src/app/models/task';
+import { Machine } from 'src/app/models/machine';
 import { JobService } from 'src/app/services/job.service';
+import { MachineService } from 'src/app/services/machine.service';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -13,18 +14,23 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskFormComponent implements OnInit {
   jobs!: Job[];
+  machines!: Machine[]
+  szabadMachines: Machine[] = []
 
   constructor(
     private formBuilder: FormBuilder,
     private taskService: TaskService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private jobService: JobService
+    private jobService: JobService,
+    private machineService: MachineService
   ) {}
 
   async ngOnInit() {
     const id = this.activatedRoute.snapshot.queryParams['id']; // id kiolvasása szerkesztéshez
     this.jobs = await this.jobService.loadJobs();
+    this.machines = await this.machineService.loadMachines()
+    this.szabadMachines = this.filterSzabad('szabad')
 
     if (id) {
       // ha érvényes az id...
@@ -33,10 +39,14 @@ export class TaskFormComponent implements OnInit {
     }
   }
 
+  filterSzabad(status: string) {
+    return this.machines.filter((x) => x.status === status);
+  }
+
   taskForm: FormGroup = this.formBuilder.group({
     id: [],
     name: ['', Validators.required],
-    machine: ['', Validators.required],
+    gep: ['', Validators.required],
     munka: ['', Validators.required],
   });
 

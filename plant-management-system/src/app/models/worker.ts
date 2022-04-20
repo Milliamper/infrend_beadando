@@ -1,5 +1,3 @@
-import { Job } from "./job"
-
 export interface Worker {
     id: number
     name: string

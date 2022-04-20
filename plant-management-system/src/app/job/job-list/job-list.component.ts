@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from 'src/app/models/job';
-import { Worker } from 'src/app/models/worker';
 import { JobService } from 'src/app/services/job.service';
-import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
   selector: 'app-job-list',
@@ -16,7 +14,7 @@ export class JobListComponent implements OnInit {
 
   jobs: Job[] = [];
 
-  constructor(private jobService: JobService, private router: Router, private workerService: WorkerService) {}
+  constructor(private jobService: JobService, private router: Router) {}
 
   async ngOnInit() {
     // itt lesz az a logika amivel a munkákat betöltjük, de csak a komponens inicializálása után, és elhelyezzük a jobs adattagban

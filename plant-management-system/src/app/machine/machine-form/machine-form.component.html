@@ -1,0 +1,33 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+        <form [formGroup]="machineForm">
+
+            <label for="name">Gép neve</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div class="text-danger" *ngIf="f['name']?.invalid">
+                <small *ngIf="f['name']?.errors?.['required']">A név mező nem hagyható üresen!</small>
+            </div>
+
+            <label for="status" class="form-label">Státusz</label>
+            <select name="status" class="form-select" id="status" name="status" formControlName="status">
+                <option value="használatban">használatban</option>
+                <option value="szabad">szabad</option>
+            </select>
+            <div class="text-danger" *ngIf="f['status'].invalid">
+                <small *ngIf="f['status'].errors">Státusz megadása kötelező!</small>
+            </div>
+
+            <button class="btn btn-primary mt-2" (click)="addMachine()" [disabled]="machineForm.invalid">Felvétel</button>
+
+        </form>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+</div>

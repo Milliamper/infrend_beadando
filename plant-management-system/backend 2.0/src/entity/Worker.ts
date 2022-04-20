@@ -2,11 +2,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
-  OneToOne,
-  ManyToMany,
-  ManyToOne,
-  JoinTable,
+  OneToMany
 } from 'typeorm';
 import { Job } from './Job';
 
@@ -29,6 +25,4 @@ export class Worker {
 
   @OneToMany(() => Job, job => job.munkas) // 1 munkáshoz tartozhat több munka is
   munkak: Job[];
-
-  //INSERT INTO `worker` (`id`, `name`, `qualification`, `hourly_wage`, `status`) VALUES (1, 'Szalai Márton', 'esztergályos', 2000, 'szabad')
 }

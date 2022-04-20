@@ -15,6 +15,9 @@ import { TaskListComponent } from './task/task-list/task-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { JobFormComponent } from './job/job-form/job-form.component';
 import { JobListComponent } from './job/job-list/job-list.component';
+import { MachineComponent } from './machine/machine.component';
+import { MachineFormComponent } from './machine/machine-form/machine-form.component';
+import { MachineListComponent } from './machine/machine-list/machine-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { JobListComponent } from './job/job-list/job-list.component';
     MainPageComponent,
     JobFormComponent,
     JobListComponent,
+    MachineComponent,
+    MachineFormComponent,
+    MachineListComponent,
   ],
   imports: [
     BrowserModule,

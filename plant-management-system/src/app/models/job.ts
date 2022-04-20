@@ -1,4 +1,3 @@
-import { Task } from "./task"
 import { Worker } from "./worker"
 
 export interface Job {
